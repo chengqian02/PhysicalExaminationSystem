@@ -26,4 +26,12 @@ public class User_person_coreController {
         model.addAttribute("Login_user", Login_user);
         return "/user/topPage/user_profile";
     }
+    @RequestMapping("/docker_person_core")
+    public String docker_person_core(HttpSession session, Model model){
+        Long userId  = (Long)session.getAttribute("loginUserId");
+        SignUser Login_user = signUserService.getById(userId);
+        model.addAttribute("Login_user", Login_user);
+        return "/user/topPage/docker_profile";
+    }
+
 }

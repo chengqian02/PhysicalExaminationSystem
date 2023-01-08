@@ -2,6 +2,7 @@ package com.llu.cat.config;
 
 
 import com.llu.cat.component.LoginHandlerInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -20,6 +21,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/login.html").setViewName("/login");
         registry.addViewController("/main_admin.html").setViewName("/admin/index_admin");
         registry.addViewController("/main_user.html").setViewName("/user/index_user");
+        registry.addViewController("/main_doctor.html").setViewName("/user/index_doctor");
     }
 
     @Override
@@ -27,7 +29,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/login.html","/","/user_login","/css/**","/js/**","/font/**","/picture/**","/webjars/**","/user_register","/public/","/META-INF/resources/","/forgetPassword");
     }
 
-    //    @Bean
+//        @Bean
 //    public  WebMvcConfigurerAdapter webMvcConfigurerAdapter(){
 //        WebMvcConfigurerAdapter adapter = new WebMvcConfigurerAdapter() {
 //            @Override

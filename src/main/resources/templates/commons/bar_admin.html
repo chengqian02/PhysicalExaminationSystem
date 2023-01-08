@@ -216,7 +216,7 @@
                 <span class="logo-icon">
                     <i class="icofont-heart-beat fs-2"></i>
                 </span>
-            <span class="logo-text">吕梁学院校医院</span>
+            <span class="logo-text">体检管理系统</span>
         </a>
         <!-- Menu: main ul -->
 
@@ -231,7 +231,7 @@
                 </ul>
             </li>
 <!--            th:class="${activeUri=='userProfile'?'nav-link active':'nav-link'}"-->
-            <li><a class="m-link"  th:class="${activeUri=='registration'?'nav-link active m-link' :'nav-link m-link'}" th:href="@{/physical_examination_registration}"><i class="icofont-ui-video-chat fs-5"></i> <span>体检登记</span></a></li>
+<!--            <li><a class="m-link"  th:class="${activeUri=='registration'?'nav-link active m-link' :'nav-link m-link'}" th:href="@{/physical_examination_registration}"><i class="icofont-ui-video-chat fs-5"></i> <span>体检登记</span></a></li>-->
 
 <!--            <li class="collapsed">-->
 <!--                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Doctor"  th:href="@{#}">-->
@@ -245,14 +245,14 @@
 <!--                    <li><a class="ms-link"  th:href="@{doctor-schedule.html}">Doctor Schedule</a></li>-->
 <!--                </ul>-->
 <!--            </li>-->
-            <li class="collapsed">
-                <a class="m-link" th:class="${activeUri=='inspect'?'nav-link active ms-link' :'nav-link ms-link'}" data-bs-toggle="collapse" data-bs-target="#menu-Patient"  th:href="@{#}">
-                    <i class="icofont-blind fs-5"></i> <span>分科检查</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                <!-- Menu: Sub menu ul -->
-                <ul class="sub-menu collapse" id="menu-Patient">
-                    <li><a class="ms-link"  th:class="${activeUri=='inspect'?'nav-link active ms-link' :'nav-link ms-link'}"  th:href="@{/division_inspect}">分科检查</a></li>
-                </ul>
-            </li>
+<!--            <li class="collapsed">-->
+<!--                <a class="m-link" th:class="${activeUri=='inspect'?'nav-link active ms-link' :'nav-link ms-link'}" data-bs-toggle="collapse" data-bs-target="#menu-Patient"  th:href="@{#}">-->
+<!--                    <i class="icofont-blind fs-5"></i> <span>分科检查</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>-->
+<!--                &lt;!&ndash; Menu: Sub menu ul &ndash;&gt;-->
+<!--                <ul class="sub-menu collapse" id="menu-Patient">-->
+<!--                    <li><a class="ms-link"  th:class="${activeUri=='inspect'?'nav-link active ms-link' :'nav-link ms-link'}"  th:href="@{/division_inspect}">分科检查</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
 <!--            <li><a class="m-link"  th:href="@{accidents.html}"><i class="icofont-stretcher fs-5"></i> <span>Accidents</span></a></li>-->
 <!--            <li><a class="m-link"  th:href="@{labs.html}"><i class="icofont-blood-test fs-5"></i> <span>Labs</span></a></li>-->
 <!--            <li><a class="m-link"  th:href="@{department.html}"><i class="icofont-hospital fs-5"></i> <span>Department</span></a></li>-->
@@ -268,17 +268,18 @@
             </li>
 
 
-            <li class="collapsed">
-                <a class="m-link" th:class="${activeUri=='signmanage' || activeUri=='phy_depart' || activeUri=='checkitem' || activeUri=='phySet'?'nav-link active m-link' :'nav-link m-link'}" data-bs-toggle="collapse" data-bs-target="#page"  th:href="@{#}">
-                    <i class="icofont-page fs-5"></i> <span>系统维护</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                <!-- Menu: Sub menu ul -->
-                <ul class="sub-menu collapse" id="page">
-                    <li><a class="ms-link"  th:class="${activeUri=='phy_depart'?'nav-link active ms-link' :'nav-link ms-link'}" th:href="@{/phy_depart}">科室管理</a></li>
-                    <li><a class="ms-link"  th:class="${activeUri=='checkitem'?'nav-link active ms-link' :'nav-link ms-link'}" th:href="@{/checkitemList}">检查项目</a></li>
-                    <li><a class="ms-link"  th:class="${activeUri=='phySet'?'nav-link active ms-link' :'nav-link ms-link'}" th:href="@{/phySetList}">体检套餐</a></li>
-                    <li><a class="ms-link" th:class="${activeUri=='signmanage'?'nav-link active ms-link' :'nav-link ms-link'}"   th:href="@{/user_manage}">用户管理</a></li>
-                </ul>
-            </li>
+<!--            <li class="collapsed">-->
+<!--                <a class="m-link" th:class="${activeUri=='signmanage' || activeUri=='phy_depart' || activeUri=='checkitem' || activeUri=='phySet'?'nav-link active m-link' :'nav-link m-link'}" data-bs-toggle="collapse" data-bs-target="#page"  th:href="@{#}">-->
+<!--                    <i class="icofont-page fs-5"></i> <span>系统维护</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>-->
+<!--                &lt;!&ndash; Menu: Sub menu ul &ndash;&gt;-->
+<!--                <ul class="sub-menu collapse" id="page">-->
+                    <li><a class="ms-link"  th:class="${activeUri=='phy_depart'?'nav-link active m-link' :'nav-link m-link'}" th:href="@{/phy_depart}"> <i class="icofont-page fs-5"></i>科室管理</a></li>
+                    <li><a class="m-link"  th:class="${activeUri=='checkitem'?'nav-link active m-link' :'nav-link m-link'}" th:href="@{/checkitemList}"> <i class="icofont-stretcher fs-5"></i>检查项目</a></li>
+                    <li><a class="m-link"  th:class="${activeUri=='phySet'?'nav-link active m-link' :'nav-link m-link'}" th:href="@{/phySetList}"> <i class="icofont-blood-test fs-5"></i> 体检套餐</a></li>
+                    <li><a class="m-link" th:class="${activeUri=='signmanage'?'nav-link active m-link' :'nav-link m-link'}"   th:href="@{/user_manage}"> <i class="icofont-blind fs-5"></i> 用户管理</a></li>
+                    <li><a class="m-link" th:class="${activeUri=='adminmanage'?'nav-link active m-link' :'nav-link m-link'}"   th:href="@{/admin_manage}"> <i class="icofont-blind fs-5"></i> 管理员管理</a></li>
+<!--                </ul>-->
+<!--            </li>-->
 
         </ul>
 

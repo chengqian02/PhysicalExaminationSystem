@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>用户信息修改</title>
+    <title>管理员信息修改</title>
     <link rel="icon" th:href="@{/picture/favicon.ico}" >
     <!-- plugin css file  -->
     <link rel="stylesheet" th:href="@{/css/responsive.dataTables.min.css}">
@@ -18,7 +18,7 @@
 <div id="ihealth-layout" class="theme-tradewind">
 
     <!-- sidebar -->
-    <div th:replace="~{commons/bar_admin::sidebar(activeUri='signmanage')}"></div>
+    <div th:replace="~{commons/bar_admin::sidebar(activeUri='adminmanage')}"></div>
 
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
@@ -32,7 +32,7 @@
                 <div class="row align-items-center">
                     <div class="border-0 mb-4">
                         <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                            <h3 class="fw-bold mb-0"><a th:href="@{/user_manage}">所有用户</a>->修改 [[${user.stuName}]] 信息</h3>
+                            <h3 class="fw-bold mb-0"><a th:href="@{/admin_manage}">所有管理员</a>->修改 [[${user.adminName}]] 信息</h3>
                         </div>
                     </div>
                 </div>
@@ -40,17 +40,16 @@
                     <div class="col-md-8" style="margin: 0 auto;">
                         <div class="card mb-3" >
                             <div class="card-body" >
-                                <form th:action="@{/usersModify}" method="post">
+                                <form th:action="@{/adminModify}" method="post">
                                     <div class="row g-3 align-items-center" style="clear: both;">
-                                        <input type="hidden" name="stuId" th:value="${user.stuId}">
-                                        <input type="hidden" name="stuPower" th:value="${user.stuPower}">
+                                        <input type="hidden" name="adminId" th:value="${user.adminId}">
                                         <div class="col-md-10">
                                             <label for="lastname" class="form-label"><h6><b>学号(工号)</b></h6></label>
-                                            <input type="text" class="form-control" th:value="${user.stuNum}" required="" name="stuNum">
+                                            <input type="text" class="form-control" th:value="${user.adminNum}" required="" name="adminNum">
                                         </div>
                                         <div class="col-md-10">
                                             <label for="firstname" class="form-label"><h6><b>名字</b></h6></label>
-                                            <input type="text" class="form-control" id="firstname" name="stuName" required="" th:value="${user.stuName}">
+                                            <input type="text" class="form-control" id="firstname" name="adminName" required="" th:value="${user.adminName}">
                                         </div>
                                         <br>
                                         <div class="col-md-10">
