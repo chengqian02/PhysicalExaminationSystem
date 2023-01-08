@@ -1,0 +1,307 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>详情页</title>
+    <link rel="icon" th:href="@{/picture/favicon.ico}">
+    <!-- Plugin css file  -->
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet"   th:href="@{/css/responsive.dataTables.min.css}">
+    <link rel="stylesheet"   th:href="@{/css/dataTables.bootstrap5.min.css}">
+    <!-- project css file  -->
+    <link rel="stylesheet" th:href="@{/css/ihealth.style.min.css}">
+    <link rel="stylesheet"   th:href="@{/css/ihealth.style.min.css}">
+</head>
+<body>
+
+<div id="ihealth-layout" class="theme-tradewind">
+    
+    <!-- sidebar -->
+    <div th:replace="~{commons/bar_user::sidebar(activeUri='physical_ex')}"></div>
+
+    <!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+
+        <!-- Body: Header -->
+        <div th:replace="~{commons/bar_user::body_header}"></div>
+
+        <!-- Body: Body -->
+        <div class="body d-flex py-3">
+            <div class="container-xxl">
+                <div class="row align-items-center">
+                    <div class="border-0 mb-4">
+                        <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                            <h3 class="fw-bold mb-0"><a th:href="@{/physical_examination_all}">体检套餐</a>->[[${user.phyName}]]套餐详情</h3>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+                <div class="row g-3 mb-3">
+                    <div class="col-xl-4 col-lg-12 col-md-12">
+                        <div class="card teacher-card mb-3 flex-column">
+                            <div class="card-body d-flex teacher-fulldeatil flex-column">
+                                <div class="profile-teacher text-center w220 mx-auto">
+                                    <a th:href="@{#}">
+                                        <img th:src="@{/picture/avatar41.jpg}" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
+                                    </a>
+                                </div>
+                                <div class="teacher-info w-100">
+                                    <div style="margin: 10px">
+                                    <h6 class="mb-0 mt-2  fw-bold d-block fs-6 text-center" >[[${user.phyName}]]套餐</h6>
+                                    </div>
+                                    <center>
+                                    <span style="margin-right: 20px" class="light-info-bg py-2 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1" th:if="${not #strings.isEmpty(user.phyCheckTypeOne)}">[[${user.phyCheckTypeOne}]]</span>
+                                    <span style="margin-right: 20px" class="light-info-bg py-2 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1" th:if="${not #strings.isEmpty(user.phyCheckTypeTwo)}">[[${user.phyCheckTypeTwo}]]</span>
+                                    <span style="margin-right: 20px" class="light-info-bg py-2 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1" th:if="${not #strings.isEmpty(user.phyCheckTypeThree)}">[[${user.phyCheckTypeThree}]]</span>
+                                    <span style="margin-right: 20px" class="light-info-bg py-2 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1" th:if="${not #strings.isEmpty(user.phyCheckTypeFour)}">[[${user.phyCheckTypeFour}]]</span>
+                                    <span style="margin-right: 20px" class="light-info-bg py-2 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1" th:if="${not #strings.isEmpty(user.phyCheckTypeFive)}">[[${user.phyCheckTypeFive}]]</span>
+                                    </center>
+                                    <br>
+                                    <div class="spec_head"><div class="spec_head-txt">适用人群</div></div>
+                                    <div class="row g-2 pt-2">
+                                        <div class="col-xl-12">
+                                            <div class="d-flex align-items-center">
+                                                <i class="icofont-ui-touch-phone"></i>
+                                                <span class="ms-2">202-555-0174 </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="d-flex align-items-center">
+                                                <i class="icofont-email"></i>
+                                                <span class="ms-2">joanwilson@gmail.com</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="d-flex align-items-center">
+                                                <i class="icofont-birthday-cake"></i>
+                                                <span class="ms-2">19/03/1980</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="d-flex align-items-center">
+                                                <i class="icofont-address-book"></i>
+                                                <span class="ms-2">2734  West Fork Street,EASTON 02334.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                <h4 class="mb-0 fw-bold ">适用人群</h4>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-12 col-md-12">
+
+                        <div class="card mb-3">
+                            <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                <h4 class="mb-0 fw-bold ">关于体检</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="exam_notes-body" style="padding: 15px;border: 1px dashed #FEA350; border-radius: 5%; font-size: 18px; " >
+                                    <p style="text-indent: 2em;" >尊敬的贵宾: 您好！欢迎您来我院健康检查，为了您顺利进行体检，请在体检前注意以下事项：</p>
+                                    <ol>
+                                        <li>体检前一天晚餐宜清淡饮食，少饮或不饮酒，晚10时后禁食，请保持良好睡眠。避免使用对肝肾功能有影响的药物，避免剧烈运动。</li>
+                                        <li>体检时请您向医务人员准确提供病史及近期服药情况；糖尿病、高血压、心脏病、脑动脉硬化等慢性病患者，请将平时服用的药物携带备用。</li>
+                                        <li>体检当天应禁食禁水，先做空腹项目（抽血、b超、胃幽门螺杆菌检测等） 后进早餐，再做其余项目。</li>
+                                        <li>做前列腺膀胱b超或子宫附件b超者，需憋尿至膀胱完全充盈后进行。</li>
+                                        <li>尿常规检查需尿量约15ml（小杯），尿液基检查需尿量约50ml（大杯），请留取中段尿。</li>
+                                        <li>体检当天请勿穿有金属扣的内衣裤，勿戴金属饰品。</li>
+                                        <li>女士需避开月经期进行体检， 请勿穿长筒袜、连衣裙。做妇科检查者，应在排空膀胱后进行。</li>
+                                        <li>怀孕或可能怀孕女士，请预先通知工作人员，避免x光、妇科检查、经阴道妇科彩超、电子肛肠镜及c13、c14呼气检测幽门螺旋杆菌。未婚女士原则上不做妇科检查及阴道b超检查。</li>
+                                        <li>体检完成后，请将体检导引单交前台护士。</li>
+                                        <li>体检中您有其它需求，请您与导检护士联系。</li>
+                                    </ol>
+                                    <br>
+                                    <p style="float: right">祝您健康，愉快 !&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                <h4 class="mb-0 fw-bold ">检查项([[${count}]]项)</h4>
+                            </div>
+                            <div class="card-body">
+                                <ol>
+                                <div th:each="depart:${list}" style="padding: 20px; font-size: 20px">
+                                    <li th:text="${depart.getDepartName()}"></li>
+                                </div>
+                                </ol>
+                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0" style="float:right;">
+                                    <a th:href="@{/physical_examination/{id}(id=${user.phyId})}"><button type="button" class="btn btn-primary">立 即 预 约</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Row End -->
+            </div>
+        </div>
+      
+        <!-- Modal Custom Settings-->
+       <div class="modal fade right" id="Settingmodal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog  modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Custom Settings</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body custom_setting">
+                        <!-- Settings: Color -->
+                        <div class="setting-theme pb-3">
+                            <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-color-bucket fs-4 me-2 text-primary"></i>Template Color Settings</h6>
+                            <ul class="list-unstyled row row-cols-3 g-2 choose-skin mb-2 mt-2">
+                                <li data-theme="indigo"><div class="indigo"></div></li>
+                                <li data-theme="tradewind" class="active"><div class="tradewind"></div></li>
+                                <li data-theme="monalisa"><div class="monalisa"></div></li>
+                                <li data-theme="blue"><div class="blue"></div></li>
+                                <li data-theme="cyan"><div class="cyan"></div></li>
+                                <li data-theme="green"><div class="green"></div></li>
+                                <li data-theme="orange"><div class="orange"></div></li>
+                                <li data-theme="blush"><div class="blush"></div></li>
+                                <li data-theme="red"><div class="red"></div></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-gradient py-3">
+                            <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-paint fs-4 me-2 text-primary"></i>Sidebar Gradient</h6>
+                            <div class="form-check form-switch gradient-switch pt-2 mb-2">
+                                <input class="form-check-input" type="checkbox" id="CheckGradient">
+                                <label class="form-check-label" for="CheckGradient">Enable Gradient! ( Sidebar )</label>
+                            </div>
+                        </div>
+                        <!-- Settings: Template dynamics -->
+                        <div class="dynamic-block py-3">
+                            <ul class="list-unstyled choose-skin mb-2 mt-1">
+                                <li data-theme="dynamic"><div class="dynamic"><i class="icofont-paint me-2"></i> Click to Dyanmic Setting</div></li>
+                            </ul>
+                            <div class="dt-setting">
+                                <ul class="list-group list-unstyled mt-1">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
+                                        <label>Primary Color</label>
+                                        <button id="primaryColorPicker" class="btn bg-primary avatar xs border-0 rounded-0"></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
+                                        <label>Secondary Color</label>
+                                        <button id="secondaryColorPicker" class="btn bg-secondary avatar xs border-0 rounded-0"></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
+                                        <label class="text-muted">Chart Color 1</label>
+                                        <button id="chartColorPicker1" class="btn chart-color1 avatar xs border-0 rounded-0"></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
+                                        <label class="text-muted">Chart Color 2</label>
+                                        <button id="chartColorPicker2" class="btn chart-color2 avatar xs border-0 rounded-0"></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
+                                        <label class="text-muted">Chart Color 3</label>
+                                        <button id="chartColorPicker3" class="btn chart-color3 avatar xs border-0 rounded-0"></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
+                                        <label class="text-muted">Chart Color 4</label>
+                                        <button id="chartColorPicker4" class="btn chart-color4 avatar xs border-0 rounded-0"></button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
+                                        <label class="text-muted">Chart Color 5</label>
+                                        <button id="chartColorPicker5" class="btn chart-color5 avatar xs border-0 rounded-0"></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Settings: Font -->
+                        <div class="setting-font py-3">
+                            <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-font fs-4 me-2 text-primary"></i> Font Settings</h6>
+                            <ul class="list-group font_setting mt-1">
+                                <li class="list-group-item py-1 px-2">
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input" type="radio" name="font" id="font-poppins" value="font-poppins">
+                                        <label class="form-check-label" for="font-poppins">
+                                            Poppins Google Font
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-1 px-2">
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input" type="radio" name="font" id="font-opensans" value="font-opensans" checked="">
+                                        <label class="form-check-label" for="font-opensans">
+                                            Open Sans Google Font
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-1 px-2">
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input" type="radio" name="font" id="font-montserrat" value="font-montserrat">
+                                        <label class="form-check-label" for="font-montserrat">
+                                            Montserrat Google Font
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-1 px-2">
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input" type="radio" name="font" id="font-mukta" value="font-mukta">
+                                        <label class="form-check-label" for="font-mukta">
+                                            Mukta Google Font
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Settings: Light/dark -->
+                        <div class="setting-mode py-3">
+                            <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-layout fs-4 me-2 text-primary"></i>Contrast Layout</h6>
+                            <ul class="list-group list-unstyled mb-0 mt-1">
+                                <li class="list-group-item d-flex align-items-center py-1 px-2">
+                                    <div class="form-check form-switch theme-switch mb-0">
+                                        <input class="form-check-input" type="checkbox" id="theme-switch">
+                                        <label class="form-check-label" for="theme-switch">Enable Dark Mode!</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-1 px-2">
+                                    <div class="form-check form-switch theme-high-contrast mb-0">
+                                        <input class="form-check-input" type="checkbox" id="theme-high-contrast">
+                                        <label class="form-check-label" for="theme-high-contrast">Enable High Contrast</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-1 px-2">
+                                    <div class="form-check form-switch theme-rtl mb-0">
+                                        <input class="form-check-input" type="checkbox" id="theme-rtl">
+                                        <label class="form-check-label" for="theme-rtl">Enable RTL Mode!</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-start">
+                        <button type="button" class="btn btn-white border lift" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary lift">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <!-- Add Document-->
+
+        <!-- Add Foodorder-->
+
+
+    </div>  
+  
+</div>
+
+<!-- Jquery Core Js -->
+<script th:src="@{/js/libscripts.bundle.js}"></script>
+
+<!-- Plugin Js -->
+<script th:src="@{/js/apexcharts.bundle.js}"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+
+<!-- Jquery Page Js -->
+<script th:src="@{/js/template.js}"></script>
+<script th:src="@{/js/patient-profile.js}"></script>
+ 
+</body>
+</html> 

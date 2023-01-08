@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>检查项目修改</title>
+    <link rel="icon" th:href="@{/picture/favicon.ico}" >
+    <!-- plugin css file  -->
+    <link rel="stylesheet" th:href="@{/css/responsive.dataTables.min.css}">
+    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+
+    <!-- project css file  -->
+    <link rel="stylesheet" th:href="@{/css/ihealth.style.min.css}">
+</head>
+<body>
+
+<div id="ihealth-layout" class="theme-tradewind">
+
+    <!-- sidebar -->
+    <div th:replace="~{commons/bar_admin::sidebar(activeUri='checkitem')}"></div>
+
+    <!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+
+        <!-- Body: Header -->
+        <div th:replace="~{commons/bar_admin::body_header}"></div>
+
+        <!-- Body: Body -->
+        <div class="body d-flex py-3">
+            <div class="container-xxl">
+                <div class="row align-items-center">
+                    <div class="border-0 mb-4">
+                        <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                            <h3 class="fw-bold mb-0"><a th:href="@{/checkitemList}">所有体检项目</a>->修改 [[${checkItem.itemName}]] 项目信息</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-item-center">
+                    <div class="col-md-8" style="margin: 0 auto;">
+                        <div class="card mb-3" >
+                            <div class="card-body" >
+                                <form th:action="@{/phyItem_modify}" method="post">
+                                    <div class="row g-3 align-items-center" style="clear: both;">
+                                        <input type="hidden" name="departId" th:value="${checkItem.itemId}">
+                                        <div class="col-md-10">
+                                            <label for="lastname" class="form-label"><h6><b>项目编号</b></h6></label>
+                                            <input type="text" class="form-control" th:value="${checkItem.itemNum}" required="" name="itemNum">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label for="firstname" class="form-label"><h6><b>项目名</b></h6></label>
+                                            <input type="text" class="form-control" id="firstname" name="itemName" required="" th:value="${checkItem.itemName}">
+                                        </div>
+                                        <br>
+                                        <div class="col-md-10">
+                                            <label for="lastname" class="form-label"><h6><b>简称</b></h6></label>
+                                            <input type="text" class="form-control" id="lastname" required="" name="itemSimp" th:value="${checkItem.itemSimp}">
+                                        </div>
+
+                                        <div class="col-md-10">
+                                            <label class="form-label"><h6><b>所属科室编号</b></h6></label>
+                                            <input type="text" class="form-control" id="phonenumber" required="" name="departNum" th:value="${checkItem.departNum}">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label class="form-label"><h6><b>所属科室</b></h6></label>
+                                            <input type="text" class="form-control" id="phonenumber2" required="" name="departName" th:value="${checkItem.departName}">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label class="form-label"><h6><b>描述</b></h6></label>
+                                            <br>
+                                            <textarea id="depart_text" class="form-control" rows="6"  name="itemRemark">[[${checkItem.itemRemark}]]</textarea>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both; margin: 20px 20px 0 auto">
+                                        <button type="submit"  class="btn btn-primary btn-lg" >修改</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- Row end  -->
+
+            </div>
+        </div>
+        <!-- Modal Custom Settings-->
+
+
+    </div>
+
+</div>
+<!-- Jquery Core Js -->
+<script th:src="@{/js/libscripts.bundle.js}"></script>
+
+<!-- Plugin Js -->
+<script th:src="@{/js/apexcharts.bundle.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+<script th:src="@{/js/dataTables.bundle.js}"></script>
+
+<!--&lt;!&ndash; Jquery Page Js &ndash;&gt;-->
+<script th:src="@{/js/template.js}"></script>
+<script>
+    $(function() {
+        // initialize after multiselect
+        $('#basic-form').parsley();
+    });
+</script>
+
+
+</body>
+</html>

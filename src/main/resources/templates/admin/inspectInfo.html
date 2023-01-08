@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>用户体检的详细信息</title>
+    <link rel="icon" th:href="@{/picture/favicon.ico}" >
+    <!-- plugin css file  -->
+    <link rel="stylesheet" th:href="@{/css/responsive.dataTables.min.css}">
+    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+
+    <!-- project css file  -->
+    <link rel="stylesheet" th:href="@{/css/ihealth.style.min.css}">
+</head>
+<body>
+
+<div id="ihealth-layout" class="theme-tradewind">
+
+    <!-- sidebar -->
+    <div th:replace="~{commons/bar_admin::sidebar(activeUri='inspect')}"></div>
+
+    <!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+
+        <!-- Body: Header -->
+        <div th:replace="~{commons/bar_admin::body_header}"></div>
+
+        <!-- Body: Body -->
+        <div class="body d-flex py-3">
+            <div class="container-xxl">
+                <div class="row align-items-center">
+                    <div class="border-0 mb-4">
+                        <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                            <h3 class="fw-bold mb-0">用户体检的详细信息</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-item-center">
+                    <div class="col-md-8" style="margin: 0 auto;">
+                        <div class="card mb-3" >
+                            <div class="card-body" >
+                                <form th:action="@{/inputInfo}" id="addjson">
+                                    <div class="modal-body">
+                                        <div class="deadline-form">
+                                            <input name="id" type="hidden" th:value="${inspect.getRegistrationId()}+','+${inspect.getDepartId()}"  >
+                                            <div class="row g-3 mb-3" th:each="data:${inspectJson.keySet()}">
+                                                <div class="col-sm-3" >
+                                                    <input  class="form-control" id="depone" th:placeholder="${data}" readonly >
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="deptwo"  th:name="${data}" th:value="${inspectJson.get(data)}" >
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style=" justify-content: center; ">
+                                        <button type="submit" class="btn btn-lg btn-primary" id="submit" >重 检</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- Modal Custom Settings-->
+
+
+    </div>
+
+</div>
+<!-- Jquery Core Js -->
+<script th:src="@{/js/libscripts.bundle.js}"></script>
+
+<!-- Plugin Js -->
+<script th:src="@{/js/apexcharts.bundle.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+<script th:src="@{/js/dataTables.bundle.js}"></script>
+
+<!--&lt;!&ndash; Jquery Page Js &ndash;&gt;-->
+<script th:src="@{/js/template.js}"></script>
+<script>
+    $(function() {
+        // initialize after multiselect
+        $('#basic-form').parsley();
+    });
+</script>
+
+
+</body>
+</html>

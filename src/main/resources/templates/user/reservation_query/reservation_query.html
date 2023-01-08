@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>健康体检</title>
+    <link rel="icon" th:href="@{/picture/favicon.ico}" >
+    <!-- plugin css file  -->
+    <link rel="stylesheet" th:href="@{/css/responsive.dataTables.min.css}">
+    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+
+    <!-- project css file  -->
+    <link rel="stylesheet" th:href="@{/css/ihealth.style.min.css}">
+</head>
+<body>
+
+<div id="ihealth-layout" class="theme-tradewind">
+    
+    <!-- sidebar -->
+    <div th:replace="~{commons/bar_user::sidebar(activeUri='reservation_query')}"></div>
+
+    <!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+
+        <!-- Body: Header -->
+        <div th:replace="~{commons/bar_user::body_header}"></div>
+
+        <!-- Body: Body -->
+        <div class="body d-flex py-3">
+            <div class="container-xxl">
+                <div class="row align-items-center">
+                    <div class="border-0 mb-4">
+                        <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                            <h3 class="fw-bold mb-0">预约查询</h3>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+                <div th:if="${not #strings.isEmpty(session.add_phy_info)}">
+                    <p th:text="${session.add_phy_info}" ></p>
+
+                </div>
+
+                <div class="row align-item-center">
+                    <div class="col-md-8" style="margin: 0 auto;">
+                        <div class="card mb-3" style="margin: 0 auto;" >
+                            <div class="card-body"  style="margin: 0 auto;" >
+                                <form th:action="@{/reservation_queryinfo}" method="post" >
+
+                                    <div class="row g-3 align-items-center" style="clear: both;">
+                                        <div class="col-md-10">
+                                            <label for="lastname" class="form-label"><h6><b>证件号码</b></h6></label>
+                                            <input type="text" class="form-control" id="lastname" required="" name="subPhyCert">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label for="admitdate" class="form-label"><b>检查日期</b></label>
+                                            <input type="date" class="form-control" id="admitdate" required="" name="subPhyDate">
+                                        </div>
+                                    </div>
+                                    <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
+                                        <p style="color: red" th:text="${msg_reservation}" th:if="${not #strings.isEmpty(msg_reservation)}" ></p>
+                                        <span style="margin: 0 auto;" th:if="${msg_process==1}"><a th:href="@{/phy_process}" style=" color: dodgerblue; font-size: 16px">点击这里查看体检流程</a></span>
+                                    </div>
+                                    <div style="text-align: center;"  >
+                                        <button type="submit"  class="btn btn-primary mt-4" ><b>立即查询</b></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Row end  -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jquery Core Js -->
+<script th:src="@{/js/libscripts.bundle.js}"></script>
+
+<!-- Plugin Js -->
+<script th:src="@{/js/apexcharts.bundle.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+<script th:src="@{/js/dataTables.bundle.js}"></script>
+
+<!--&lt;!&ndash; Jquery Page Js &ndash;&gt;-->
+<script th:src="@{/js/template.js}"></script>
+<script>
+    $(function() {
+        // initialize after multiselect
+        $('#basic-form').parsley();
+    });
+</script>
+
+
+</body>
+</html> 

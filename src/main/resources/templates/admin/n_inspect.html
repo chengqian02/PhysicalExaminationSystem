@@ -1,0 +1,274 @@
+﻿<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>分科检查</title>
+	<link rel="icon" th:href="@{picture/favicon.ico}" >
+	<!-- plugin css file  -->
+	<link rel="stylesheet"   th:href="@{/css/responsive.dataTables.min.css}">
+	<link rel="stylesheet"   th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<!-- project css file  -->
+	<link rel="stylesheet"   th:href="@{/css/ihealth.style.min.css}">
+</head>
+<body>
+
+<div id="ihealth-layout" class="theme-tradewind">
+
+	<!-- sidebar -->
+	<div th:replace="~{commons/bar_admin::sidebar(activeUri='inspect')}"></div>
+
+	<!-- main body area -->
+	<div class="main px-lg-4 px-md-4">
+
+		<!-- Body: Header -->
+		<div th:replace="~{commons/bar_admin::body_header}"></div>
+
+		<!-- Body: Body -->
+		<div class="body d-flex py-3">
+			<div class="container-xxl">
+				<div class="row align-items-center">
+					<div class="border-0 mb-4">
+						<div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+							<h3 class="fw-bold mb-0"> [[${departName}]] 科室</h3>
+							<div class="col-auto d-flex w-sm-100">
+								<button type="button" class="btn btn-primary btn-set-task w-sm-100" data-bs-toggle="modal" data-bs-target="#depadd"><i class="icofont-plus-circle me-2 fs-6"></i>切换科室</button>
+							</div>
+						</div>
+					</div>
+				</div> <!-- Row end  -->
+				<div class="row mb-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex py-2 project-tab flex-wrap w-sm-100">
+								<ul class="nav nav-tabs tab-body-header rounded  prtab-set w-sm-100 list-unstyled" role="tablist">
+									<li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" th:href="@{#all}" role="tab">未检查人员</a></li>
+									<li class="nav-item"><a class="nav-link " data-bs-toggle="tab" th:href="@{#new}" role="tab">已检查人员</a></li>
+								</ul>
+
+							</div>
+							<div class="tab-content mt-4 w-100">
+								<div class="tab-pane fade " id="all">
+									<div class="row mb-3">
+										<div class="card">
+											<div class="card-body">
+												<table id="patient-table2" class="table table-hover align-middle mb-0" style="width: 100%; text-align: center">
+													<thead>
+													<tr >
+														<th >体检编号</th>
+														<th >用户姓名</th>
+														<th >用户手机</th>
+														<th >身份证</th>
+														<th >用户邮箱</th>
+														<th >登记时间</th>
+														<th >状态</th>
+														<th >操作</th>
+													</tr >
+													</thead>
+													<tbody>
+													<tr th:each="currentUserOne:${currentUserListOne}">
+														<td>
+															<span th:text="${currentUserOne.registrationId}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserOne.registrationName}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserOne.registrationPhone}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserOne.registrationCert}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserOne.registrationEmail}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserOne.registrationDate}" ></span>
+														</td>
+														<td>
+															<span> 待检</span>
+														</td>
+														<td>
+															<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#inspect" th:data-bs-whatever="${currentUserOne.registrationId}+','+${departNum}" >开检</button>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade show active" id="new">
+									<div class="row mb-3">
+										<div class="card">
+											<div class="card-body">
+												<table id="patient-table" class="table table-hover align-middle mb-0" style="width: 100%; text-align: center">
+													<thead>
+													<tr >
+														<th >体检编号</th>
+														<th >用户姓名</th>
+														<th >用户手机</th>
+														<th >身份证</th>
+														<th >用户邮箱</th>
+														<th >登记时间</th>
+														<th >检查时间</th>
+														<th >转态</th>
+														<th >操作</th>
+													</tr >
+													</thead>
+													<tbody>
+													<tr th:each="currentUserTwo:${currentUserListTwo}">
+														<td>
+															<span th:text="${currentUserTwo.registrationId}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserTwo.registrationName}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserTwo.registrationPhone}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserTwo.registrationCert}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserTwo.registrationEmail}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserTwo.registrationDate}" ></span>
+														</td>
+														<td>
+															<span th:text="${currentUserTwo.inspectDate}" ></span>
+														</td>
+														<td>
+															<span >已检查</span>
+														</td>
+														<td>
+
+															<button type="button" class="btn btn-info"><a  th:href="@{/cancelRegistration/{id}(id=${currentUserTwo.registrationId})}">重检</a></button>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="depadd" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title  fw-bold" id="depaddLabel">切换科室</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" style="text-align: center;" >
+						<div class="deadline-form" style="margin: 20px;" >
+							<button class="btn btn-primary btn-set-task w-sm-100" th:each="depart:${departList}" style="margin: 20px;"> <a th:href="@{'/division_inspect?departNum='+${depart.departNum}}" >[[${depart.departName}]]</a></button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="inspect" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title  fw-bold" id="depaddLabe">录入信息</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<form th:action="@{/inputInfo}" id="addjson">
+						<div class="modal-body">
+							<div class="deadline-form">
+								<div class="hiddentext">
+									<input name="id" type="hidden" >
+								</div>
+								<div class="row g-3 mb-3" th:each="item:${itemList}">
+									<div class="col-sm-3" >
+										<input  class="form-control" id="depone" th:placeholder="${item.getItemName()}" readonly >
+									</div>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="deptwo"  th:name="${item.getItemName()}">
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+							<button type="submit" class="btn btn-primary" id="submit">录入</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<script>
+	var Modal = document.getElementById('inspect')
+	Modal.addEventListener('show.bs.modal', function (event) {
+		var button = event.relatedTarget
+		var recipient = button.getAttribute('data-bs-whatever')
+		var modalBodyInput = Modal.querySelector('.hiddentext input')
+		modalBodyInput.value = recipient
+	})
+</script>
+
+<!-- Jquery Core Js -->
+<script th:src="@{/js/libscripts.bundle.js}"></script>
+<script th:src="@{/js/jquery.serializejson.js}"></script>
+
+
+<!-- Plugin Js-->
+<script th:src="@{/js/dataTables.bundle.js}"></script>
+
+<!-- Jquery Page Js -->
+<script th:src="@{/js/template.js}"></script>
+<script>
+	$(document).ready(function() {
+		$('#patient-table')
+				.addClass( 'nowrap' )
+				.dataTable( {
+					responsive: true,
+					columnDefs: [
+						{ targets: [-1, -3], className: 'dt-body-right' }
+					]
+				});
+	});
+
+</script>
+
+<script>
+	$(document).ready(function() {
+		$('#patient-table2')
+				.addClass( 'nowrap' )
+				.dataTable( {
+					responsive: true,
+					columnDefs: [
+						{ targets: [-1, -3], className: 'dt-body-right' }
+					]
+				});
+	});
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
