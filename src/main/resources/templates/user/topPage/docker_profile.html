@@ -18,15 +18,13 @@
 <div id="ihealth-layout" class="theme-tradewind">
     
    <!-- sidebar -->
-    <div th:replace="~{commons/bar_user::sidebar(activeUri='person_core')}"></div>
+    <div th:replace="~{commons/bar_doctor::sidebar(activeUri='person_core')}"></div>
 
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
 
         <!-- Body: Header -->
-
-
-        <div   th:replace="~{commons/bar_user::body_header}"></div>
+        <div   th:replace="~{commons/bar_doctor::body_header}"></div>
 
         <!-- Body: Body -->
         <div class="body d-flex py-3">
@@ -595,18 +593,17 @@
   
 </div>
 
-
-
 <!-- Jquery Core Js -->
 <script th:src="@{/js/libscripts.bundle.js}"></script>
 
-<!-- Plugin Js -->
+
+<!-- Plugin Js-->
 <script th:src="@{/js/apexcharts.bundle.js}"></script>
-<script th:src="@{/js/owl.carousel.js}"></script>
+<script th:src="@{/js/dataTables.bundle.js}"></script>
 
 <!-- Jquery Page Js -->
 <script th:src="@{/js/template.js}"></script>
-<script th:src="@{/js/patient-profile.js}"></script>
+<script th:src="@{/js/doctor-profile.js}"></script>
  
 </body>
 </html> 

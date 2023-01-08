@@ -4,10 +4,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.llu.cat.entity.SignUser;
 import com.llu.cat.services.SignUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +61,9 @@ public class user_manage {
 
     //用户添加
     @PostMapping("/userAdd")
-    public  String userAdd(SignUser signUser, Map<String, String> map){
+    public  String userAdd(SignUser signUser, Map<String, String> map ,HttpServletRequest request){
+        String parameter = request.getParameter("stuPower");
+        signUser.setStuPower(Integer.parseInt(parameter));
         boolean save = signUserService.save(signUser);
         if(save){
             map.put("addinfo", "添加成功");

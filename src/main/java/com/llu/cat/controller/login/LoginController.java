@@ -43,7 +43,12 @@ public class LoginController {
                     session.setAttribute("password", user.getPassword());
                     session.setAttribute("loginUserId", user.getStuId());
                     session.setAttribute("authority", 1);
-                    return "redirect:/main_user.html";
+                    if(user.getStuPower()==0){
+                        session.setAttribute("userauthority", "0");
+                        return "redirect:/main_user.html";
+                    }else{
+                        return "redirect:/main_doctor.html";
+                    }
                 } else {
                     map.put("msg", "用户密码错误,重新登录");
                     return "login";
@@ -123,7 +128,11 @@ public class LoginController {
                 map.put("msg", "密码修改成功，请重新登录");
                 return "login";
             }else {
-                return "redirect:/main_user.html";
+                if(signuser.getStuPower()==0){
+                    return "redirect:/main_user.html";
+                }else {
+                    return "redirect:/main_doctor.html";
+                }
             }
         }
     }

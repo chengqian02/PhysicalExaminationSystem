@@ -23,6 +23,10 @@ url: jdbc:mysql://localhost:3306/llu_cat?useUnicode=true&useSSL=false&characterE
 
 ![image-20220728164432811](https://github.com/chengqian02/PhysicalExaminationSystem/raw/master/image/readme1.png)
 
+#### 医生角色
+
+![image-20220728164432811](https://github.com/chengqian02/PhysicalExaminationSystem/raw/master/image/readme2.png)
+
 #### 普通用户角色
 
 ![image-20220728164220140](https://github.com/chengqian02/PhysicalExaminationSystem/raw/master/image/readme3.png)

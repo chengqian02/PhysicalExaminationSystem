@@ -53,4 +53,7 @@ public class SignUser
     @ExcelProperty("出生日期")
     @ColumnWidth(20)
     private String entranceDate;
+    @ExcelProperty("权限(输入0或1)")
+    @ColumnWidth(20)
+    private long stuPower;
 }

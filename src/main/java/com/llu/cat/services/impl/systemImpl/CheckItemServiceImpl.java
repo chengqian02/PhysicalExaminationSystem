@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @create 2022-03-02 22:06
  */
 @Service
-public class CheckItemServiceImpl extends ServiceImpl<CheckItemMapper, CheckItem> implements CheckItemService {
+public class  CheckItemServiceImpl extends ServiceImpl<CheckItemMapper, CheckItem> implements CheckItemService {
 
 
 }
